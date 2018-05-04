@@ -4,7 +4,7 @@ import PlaylistLoader from 'playlist/loader';
 import Playlist, { filterPlaylist, validatePlaylist } from 'playlist/playlist';
 import ScriptLoader from 'utils/scriptloader';
 import { bundleContainsProviders } from 'api/core-loader';
-import { SETUP_ERROR_LOADING_PLAYLIST, SETUP_ERROR_LOADING_PROVIDER } from 'api/errors';
+import { SETUP_ERROR_LOADING_PROVIDER } from 'api/errors';
 
 export function loadPlaylist(_model) {
     const playlist = _model.get('playlist');
