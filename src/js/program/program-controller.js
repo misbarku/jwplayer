@@ -8,7 +8,7 @@ import BackgroundMedia from 'program/background-media';
 
 import { ERROR, PLAYER_STATE, STATE_BUFFERING } from 'events/events';
 import { Features } from 'environment/environment';
-import { PlayerError, ERROR_LOADING_PROVIDER } from 'api/errors';
+import { ERROR_LOADING_PROVIDER } from 'api/errors';
 
 /** @private Do not include in JSDocs */
 
