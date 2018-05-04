@@ -4,6 +4,7 @@ import PlaylistLoader from 'playlist/loader';
 import Playlist, { filterPlaylist, validatePlaylist } from 'playlist/playlist';
 import ScriptLoader from 'utils/scriptloader';
 import { bundleContainsProviders } from 'api/core-loader';
+import { SETUP_ERROR_LOADING_PLAYLIST, SETUP_ERROR_LOADING_PROVIDER } from 'api/errors';
 
 export function loadPlaylist(_model) {
     const playlist = _model.get('playlist');
@@ -59,7 +60,11 @@ function loadProvider(_model) {
         if (bundleContainsProviders.html5 && name === 'html5') {
             return bundleContainsProviders.html5;
         }
-        return providersManager.load(name);
+        return providersManager.load(name)
+            .catch(e => {
+                e.code = (e.code || 0) + SETUP_ERROR_LOADING_PROVIDER;
+                throw e;
+            });
     });
 }
 

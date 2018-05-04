@@ -30,6 +30,21 @@ export const SETUP_ERROR_LICENSE_EXPIRED = 100013;
 export const SETUP_ERROR_LOADING_CORE_JS = 101000;
 
 /**
+ * @enum {ErrorCode} Setup failed because the playlist failed to load
+ */
+export const SETUP_ERROR_LOADING_PLAYLIST = 102000;
+
+/**
+ * @enum {ErrorCode} Setup failed because the initial provider failed to load
+ */
+export const SETUP_ERROR_LOADING_PROVIDER = 104000;
+
+/**
+ * @enum {ErrorCode} The required provider could not be loaded
+ */
+export const ERROR_LOADING_PROVIDER = 204000;
+
+/**
  * Class representing the jwplayer() API.
  * Creates an instance of the player.
  * @class PlayerError

@@ -7,7 +7,8 @@ import Eventable from 'utils/eventable';
 import BackgroundMedia from 'program/background-media';
 
 import { ERROR, PLAYER_STATE, STATE_BUFFERING } from 'events/events';
-import { Features } from '../environment/environment';
+import { Features } from 'environment/environment';
+import { PlayerError, ERROR_LOADING_PROVIDER } from 'api/errors';
 
 /** @private Do not include in JSDocs */
 
@@ -403,7 +404,11 @@ class ProgramController extends Eventable {
         }
 
         return providers.load(name)
-            .then(ProviderConstructor => makeMediaController(ProviderConstructor));
+            .then(ProviderConstructor => makeMediaController(ProviderConstructor))
+            .catch(e => {
+                e.code = (e.code || 0) + ERROR_LOADING_PROVIDER;
+                throw e;
+            });
     }
 
     /**
